@@ -1,0 +1,3 @@
+# One registered Python distribution per line.
+# The distribution must install a CLI command with the same name.
+
