@@ -1,5 +1,8 @@
 # LLM Tools: Install and Manage Python Tools for AI Agents
 
+> **`LLM-tools.txt` is requirements.txt for LLM tools.** Install, pin,
+> discover, describe, and execute an agent's tools from one simple file.
+
 ## The LLM tool-management problem
 
 Giving an LLM one tool is easy. Keeping many tools installed, documented,
@@ -21,10 +24,11 @@ This creates practical problems:
 - How is the API called without copying its client into every project?
 - What error information reaches the agent when a call fails?
 
-`LLM Tools` solves this with a lightweight Python LLM tool manager. Each tool
-is a normal pip package. The manager installs it on the agent's machine,
-records its exact version, asks it for usage instructions, and executes it
-through one predictable contract.
+`LLM Tools` solves this with a lightweight Python LLM tool manager. Think of
+`LLM-tools.txt` as requirements.txt for the tools an LLM can actually call.
+Each tool is a normal pip package. The manager installs it on the agent's
+machine, records its exact version, asks it for usage instructions, and
+executes it through one predictable contract.
 
 The tool's real work can remain on a FastAPI server, commercial API, local
 model, or local Python service. Only a small client package is installed beside
@@ -79,9 +83,10 @@ writing a new integration for every model provider.
 ## Why client-side LLM tool installation is better
 
 Client-side installation makes tools behave like normal Python dependencies.
-Each agent chooses and pins the versions it needs. Another developer can read
-`LLM-tools.txt`, recreate the same setup, and understand exactly what the LLM
-can call.
+Python packages have `requirements.txt`; LLM tool packages have
+`LLM-tools.txt`. Each agent chooses and pins the versions it needs. Another
+developer can read that file, recreate the same setup, and understand exactly
+what the LLM can call.
 
 The manager provides:
 
