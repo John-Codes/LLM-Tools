@@ -57,7 +57,9 @@ weather-tool==1.2.0
 search-tool==2.1.3
 ```
 
-Installing and using a tool becomes three beginner-friendly commands:
+Installing and using a published tool becomes three beginner-friendly commands.
+Here, `weather-tool` is an example package name; a fully runnable package is
+provided later in this README.
 
 ```bash
 # 1. Install the tool package and save its version.
@@ -97,8 +99,21 @@ Python application, or AI agent to perform safely and repeatably.
 
 ## Install with pip
 
-Python 3.11 or newer is required. Install LLM Tools directly from GitHub with
-one pip command:
+Python 3.11 or newer is required. Start in the folder containing your agent.
+A virtual environment keeps its tools separate from other Python projects:
+
+```bash
+# Create a private Python environment inside the current project.
+python -m venv .venv
+
+# Activate it on Linux or macOS.
+source .venv/bin/activate
+
+# Windows users run this activation command instead:
+# .venv\Scripts\activate
+```
+
+Now install LLM Tools directly from GitHub with one pip command:
 
 ```bash
 python -m pip install "git+https://github.com/John-Codes/LLM-Tools.git"
@@ -121,10 +136,11 @@ python -m pip install llm-tools
 
 ## Install an LLM tool
 
-Installing a compatible tool is one command:
+Installing a compatible, published tool is one command. Replace
+`YOUR_TOOL_PACKAGE` with its pip package name:
 
 ```bash
-llm-tools install weather-tool
+llm-tools install YOUR_TOOL_PACKAGE
 ```
 
 LLM Tools runs pip safely, confirms that the tool command exists, detects the
@@ -132,15 +148,15 @@ installed version, and records it in `LLM-tools.txt`. The resulting file is as
 simple as a Python requirements file:
 
 ```text
-weather-tool==1.2.0
+YOUR_TOOL_PACKAGE==1.2.0
 ```
 
 Now an agent can discover, understand, and call the package:
 
 ```bash
 llm-tools list
-llm-tools describe weather-tool --format json
-llm-tools execute weather-tool --payload '{"city":"Chicago"}'
+llm-tools describe YOUR_TOOL_PACKAGE --format json
+llm-tools execute YOUR_TOOL_PACKAGE --payload '{"input":"value"}'
 ```
 
 The default registry is `LLM-tools.txt` in the current directory. Override it
